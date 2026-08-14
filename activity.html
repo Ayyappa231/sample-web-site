@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pick Our Adventure ✨</title><link rel="stylesheet" href="css/style.css"></head>
+<body>
+<div class="hearts" id="hearts"></div>
+<button class="music" id="musicBtn" onclick="toggleMusic()" aria-label="Toggle music">♫</button>
+<main class="card"><section class="page">
+<div class="badge">Chapter two</div><div class="big-icon">✨</div>
+<h2>Pick our little adventure</h2><p>What sounds nicest to you?</p>
+<div class="choices">
+<div class="choice" data-choice="Movie" onclick="selectChoice(this)"><span class="icon">🎬</span><strong>Movie</strong></div>
+<div class="choice" data-choice="Coffee" onclick="selectChoice(this)"><span class="icon">☕</span><strong>Coffee</strong></div>
+<div class="choice" data-choice="Ice Cream" onclick="selectChoice(this)"><span class="icon">🍦</span><strong>Ice Cream</strong></div>
+<div class="choice" data-choice="Park" onclick="selectChoice(this)"><span class="icon">🌳</span><strong>Park</strong></div>
+<div class="choice" data-choice="Beach" onclick="selectChoice(this)"><span class="icon">🏖️</span><strong>Beach</strong></div></div>
+<div class="hint" id="choiceHint"></div>
+<div class="buttons"><button class="btn primary" onclick="submitChoice()">Seal the plan 💞</button></div>
+</section></main>
+<script src="js/music.js"></script><script src="js/home.js"></script><script src="js/activity.js"></script>
+</body></html>

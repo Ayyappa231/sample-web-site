@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Choose Our Date 🌷</title><link rel="stylesheet" href="css/style.css"></head>
+<body>
+<div class="hearts" id="hearts"></div>
+<button class="music" id="musicBtn" onclick="toggleMusic()" aria-label="Toggle music">♫</button>
+<main class="card"><section class="page">
+<div class="badge">Chapter one</div><div class="big-icon">🌷</div>
+<h2>Choose our date</h2><p>Pick a day that feels right. Take your time. 💗</p>
+<div class="calendar"><div class="cal-head">
+<button onclick="changeMonth(-1)">‹</button><div class="month" id="monthTitle"></div><button onclick="changeMonth(1)">›</button></div>
+<div class="week"><span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span></div>
+<div class="days" id="days"></div></div>
+<div class="selected-date" id="dateHint">Choose a date above ♡</div>
+<div class="buttons"><button class="btn primary" onclick="submitDate()">That day sounds perfect →</button></div>
+</section></main>
+<script src="js/music.js"></script><script src="js/home.js"></script><script src="js/calendar.js"></script>
+</body></html>
