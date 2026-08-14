@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Responses 💕</title>
+<link rel="stylesheet" href="css/style.css">
+<style>
+.response-wrap{width:100%;max-width:900px;margin:auto}
+.admin-box{max-width:520px;margin:25px auto 0}
+.admin-input{width:100%;padding:14px 16px;border:1px solid #efd9df;border-radius:14px;background:#fff;font:14px Poppins,sans-serif;color:#432c36;outline:none}
+.admin-input:focus{border-color:#e85d75;box-shadow:0 0 0 3px #fff0f3}
+.response-table{width:100%;margin-top:25px;border-collapse:collapse;background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 10px 25px rgba(90,35,50,.07)}
+.response-table th,.response-table td{padding:13px 10px;border-bottom:1px solid #f3e3e7;text-align:left;font-size:13px}
+.response-table th{background:#fff0f3;color:#8e3048}
+.status{min-height:24px;color:#9b5265;margin:12px 0;font-size:13px}
+@media(max-width:600px){.response-table th,.response-table td{padding:9px 6px;font-size:11px}}
+</style>
+</head>
+<body>
+<div class="hearts" id="hearts"></div>
+<button class="music" id="musicBtn" onclick="toggleMusic()">♫</button>
+<main class="card">
+<section class="page response-wrap">
+<div class="badge">Private response view</div>
+<div class="big-icon">💌</div>
+<h2>Responses</h2>
+<p>Enter your admin key to see the dates and activities people selected.</p>
+<div class="admin-box">
+<input class="admin-input" id="adminKey" type="password" placeholder="Admin key">
+<div class="buttons"><button class="btn primary" onclick="loadResponses()">Show responses</button></div>
+<div class="status" id="status"></div>
+</div>
+<div id="tableContainer"></div>
+</section>
+</main>
+<script src="js/music.js"></script>
+<script src="js/home.js"></script>
+<script src="js/config.js"></script>
+<script src="js/responses.js"></script>
+</body>
+</html>
