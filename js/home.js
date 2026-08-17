@@ -18,55 +18,78 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     // ----------------------------------------
-    // Move No button inside the card
+    // Move No button around lower portion
+    // of the card only
     // ----------------------------------------
 
     function moveNoButton() {
 
-        const cardRect = card.getBoundingClientRect();
+        const cardWidth = card.clientWidth;
+        const cardHeight = card.clientHeight;
 
         const buttonWidth = noButton.offsetWidth;
         const buttonHeight = noButton.offsetHeight;
 
-        // Space from card edges
-        const padding = 20;
+        // Horizontal padding from card edges
+        const sidePadding = 25;
 
-        // Maximum allowed position
+        // Keep the button in the lower part
+        // of the card.
+        const lowerStart = cardHeight * 0.62;
+
+        // Bottom padding
+        const bottomPadding = 25;
+
+
+        // ------------------------------------
+        // Calculate safe boundaries
+        // ------------------------------------
+
+        const minLeft = sidePadding;
+
         const maxLeft =
-            card.clientWidth -
+            cardWidth -
             buttonWidth -
-            padding;
+            sidePadding;
+
+
+        const minTop = lowerStart;
 
         const maxTop =
-            card.clientHeight -
+            cardHeight -
             buttonHeight -
-            padding;
-
-        // Minimum allowed position
-        const minLeft = padding;
-        const minTop = padding;
+            bottomPadding;
 
 
+        // ------------------------------------
         // Generate random position
+        // ------------------------------------
+
         const randomLeft =
             Math.floor(
                 Math.random() *
-                (maxLeft - minLeft + 1)
+                Math.max(maxLeft - minLeft, 1)
             ) + minLeft;
+
 
         const randomTop =
             Math.floor(
                 Math.random() *
-                (maxTop - minTop + 1)
+                Math.max(maxTop - minTop, 1)
             ) + minTop;
 
 
-        // Change to absolute positioning
+        // ------------------------------------
+        // Apply position
+        // ------------------------------------
+
         noButton.style.position = "absolute";
 
-        noButton.style.left = randomLeft + "px";
+        noButton.style.left =
+            randomLeft + "px";
 
-        noButton.style.top = randomTop + "px";
+        noButton.style.top =
+            randomTop + "px";
 
         noButton.style.zIndex = "100";
     }
@@ -76,66 +99,79 @@ document.addEventListener("DOMContentLoaded", function () {
     // Desktop
     // ----------------------------------------
 
-    noButton.addEventListener("mouseenter", function () {
-
-        moveNoButton();
-
-    });
-
-
-    // ----------------------------------------
-    // Mobile
-    // ----------------------------------------
-
-    noButton.addEventListener("touchstart", function (event) {
-
-        event.preventDefault();
-
-        moveNoButton();
-
-    });
-
-
-    // ----------------------------------------
-    // Move when cursor gets close
-    // ----------------------------------------
-
-    document.addEventListener("mousemove", function (event) {
-
-        const buttonRect =
-            noButton.getBoundingClientRect();
-
-        const buttonCenterX =
-            buttonRect.left +
-            buttonRect.width / 2;
-
-        const buttonCenterY =
-            buttonRect.top +
-            buttonRect.height / 2;
-
-
-        const distanceX =
-            event.clientX - buttonCenterX;
-
-        const distanceY =
-            event.clientY - buttonCenterY;
-
-
-        const distance =
-            Math.sqrt(
-                distanceX * distanceX +
-                distanceY * distanceY
-            );
-
-
-        // Cursor is close to button
-        if (distance < 70) {
+    noButton.addEventListener(
+        "mouseenter",
+        function () {
 
             moveNoButton();
 
         }
+    );
 
-    });
 
+    // ----------------------------------------
+    // Mobile / Touch
+    // ----------------------------------------
+
+    noButton.addEventListener(
+        "touchstart",
+        function (event) {
+
+            event.preventDefault();
+
+            moveNoButton();
+
+        }
+    );
+
+
+    // ----------------------------------------
+    // Detect cursor approaching button
+    // ----------------------------------------
+
+    document.addEventListener(
+        "mousemove",
+        function (event) {
+
+            const buttonRect =
+                noButton.getBoundingClientRect();
+
+
+            const buttonCenterX =
+                buttonRect.left +
+                buttonRect.width / 2;
+
+
+            const buttonCenterY =
+                buttonRect.top +
+                buttonRect.height / 2;
+
+
+            const distanceX =
+                event.clientX -
+                buttonCenterX;
+
+
+            const distanceY =
+                event.clientY -
+                buttonCenterY;
+
+
+            const distance =
+                Math.sqrt(
+                    distanceX * distanceX +
+                    distanceY * distanceY
+                );
+
+
+            // Move when cursor comes close
+            if (distance < 70) {
+
+                moveNoButton();
+
+            }
+
+        }
+    );
 
 });
