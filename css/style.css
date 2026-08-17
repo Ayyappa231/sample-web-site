@@ -77,7 +77,9 @@ button{font:600 15px Poppins,sans-serif;cursor:pointer;border:0}
  .choice:nth-child(4),.choice:nth-child(5){grid-column:auto}
  .day{height:39px;font-size:13px}.calendar{padding:12px}
 }
-/* Playful No button container */
+/* ----------------------------------------
+   Playful No Button
+   ---------------------------------------- */
 
 #homeCard {
     position: relative;
@@ -85,7 +87,7 @@ button{font:600 15px Poppins,sans-serif;cursor:pointer;border:0}
 
 #homeButtons {
     position: relative;
-    min-height: 65px;
+    min-height: 150px;
 }
 
 .no-button {
