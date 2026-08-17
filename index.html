@@ -1,18 +1,71 @@
 <!DOCTYPE html>
-<html lang="en"><head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>A Little Something 💕</title><link rel="stylesheet" href="css/style.css"></head>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>A Little Question 💕</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
 <body>
+
 <div class="hearts" id="hearts"></div>
-<button class="music" id="musicBtn" onclick="toggleMusic()" aria-label="Toggle music">♫</button>
-<main class="card"><section class="page active">
-<div class="badge">A tiny question for you</div><div class="big-icon">💌</div>
-<h1>Can I steal<br>a little time with you?</h1>
-<p>Nothing complicated. Just a lovely little plan, made especially for two. ✨</p>
-<div class="buttons">
-<button class="btn primary" onclick="goTo('date.html')">Okay, let's do it 💕</button>
-<button class="btn secondary" onclick="goTo('no.html')">No, sorry 🥺</button></div>
-<div class="footer-note">There is no wrong answer... probably. 😌</div>
-</section></main>
-<script src="js/music.js"></script><script src="js/home.js"></script>
-</body></html>
+
+<button
+    class="music"
+    id="musicBtn"
+    onclick="toggleMusic()"
+    aria-label="Toggle music">
+    ♫
+</button>
+
+<main class="card">
+    <section class="page active">
+
+        <div class="badge">A tiny question for you</div>
+
+        <div class="big-icon">💌</div>
+
+        <h1>
+            Can I steal<br>
+            a little time with you?
+        </h1>
+
+        <p>
+            Nothing complicated. Just a lovely little plan,
+            made especially for two. ✨
+        </p>
+
+        <div class="buttons" id="homeButtons">
+
+            <!-- YES BUTTON -->
+            <button
+                class="btn primary"
+                onclick="goTo('date.html')">
+                Okay, let's do it 💕
+            </button>
+
+            <!-- PLAYFUL NO BUTTON -->
+            <button
+                class="btn secondary no-button"
+                id="noButton"
+                onclick="goTo('no.html')">
+                No, sorry 🥺
+            </button>
+
+        </div>
+
+        <div class="footer-note">
+            There is no wrong answer... probably. 😌
+        </div>
+
+    </section>
+</main>
+
+<script src="js/music.js"></script>
+<script src="js/home.js"></script>
+
+</body>
+</html>
