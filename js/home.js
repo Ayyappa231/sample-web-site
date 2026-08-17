@@ -2,83 +2,79 @@
 // Romantic Website - Home Page
 // ========================================
 
-
-// ----------------------------------------
-// Navigate to another page
-// ----------------------------------------
-
 function goTo(page) {
     window.location.href = page;
 }
 
 
-// ----------------------------------------
-// Playful "No" button
-// ----------------------------------------
-
 document.addEventListener("DOMContentLoaded", function () {
 
     const noButton = document.getElementById("noButton");
-    const card = document.querySelector(".card");
+    const card = document.getElementById("homeCard");
 
     if (!noButton || !card) {
         return;
     }
 
 
-    // ------------------------------------
-    // Move the button
-    // ------------------------------------
+    // ----------------------------------------
+    // Move No button inside the card
+    // ----------------------------------------
 
     function moveNoButton() {
 
         const cardRect = card.getBoundingClientRect();
-        const buttonRect = noButton.getBoundingClientRect();
 
-        // Keep the button safely inside the card
-        const padding = 25;
+        const buttonWidth = noButton.offsetWidth;
+        const buttonHeight = noButton.offsetHeight;
 
-        const maxX =
-            cardRect.width -
-            buttonRect.width -
+        // Space from card edges
+        const padding = 20;
+
+        // Maximum allowed position
+        const maxLeft =
+            card.clientWidth -
+            buttonWidth -
             padding;
 
-        const maxY =
-            cardRect.height -
-            buttonRect.height -
+        const maxTop =
+            card.clientHeight -
+            buttonHeight -
             padding;
 
-        const minX = padding;
-        const minY = padding;
+        // Minimum allowed position
+        const minLeft = padding;
+        const minTop = padding;
 
 
-        // Generate a random position
-        const randomX =
+        // Generate random position
+        const randomLeft =
             Math.floor(
                 Math.random() *
-                Math.max(maxX - minX, 1)
-            ) + minX;
+                (maxLeft - minLeft + 1)
+            ) + minLeft;
 
-        const randomY =
+        const randomTop =
             Math.floor(
                 Math.random() *
-                Math.max(maxY - minY, 1)
-            ) + minY;
+                (maxTop - minTop + 1)
+            ) + minTop;
 
 
-        // Change button to absolute positioning
+        // Change to absolute positioning
         noButton.style.position = "absolute";
 
-        noButton.style.left = randomX + "px";
-        noButton.style.top = randomY + "px";
+        noButton.style.left = randomLeft + "px";
 
-        noButton.style.zIndex = "10";
+        noButton.style.top = randomTop + "px";
+
+        noButton.style.zIndex = "100";
     }
 
 
-    // ------------------------------------
-    // Desktop - mouse approaching button
-    // ------------------------------------
+    // ----------------------------------------
+    // Desktop
+    // ----------------------------------------
 
     noButton.addEventListener("mouseenter", function () {
 
@@ -87,9 +83,9 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 
-    // ------------------------------------
-    // Mobile / touch devices
-    // ------------------------------------
+    // ----------------------------------------
+    // Mobile
+    // ----------------------------------------
 
     noButton.addEventListener("touchstart", function (event) {
 
@@ -100,19 +96,22 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 
-    // ------------------------------------
-    // Also move when mouse gets close
-    // ------------------------------------
+    // ----------------------------------------
+    // Move when cursor gets close
+    // ----------------------------------------
 
     document.addEventListener("mousemove", function (event) {
 
-        const rect = noButton.getBoundingClientRect();
+        const buttonRect =
+            noButton.getBoundingClientRect();
 
         const buttonCenterX =
-            rect.left + rect.width / 2;
+            buttonRect.left +
+            buttonRect.width / 2;
 
         const buttonCenterY =
-            rect.top + rect.height / 2;
+            buttonRect.top +
+            buttonRect.height / 2;
 
 
         const distanceX =
@@ -129,8 +128,7 @@ document.addEventListener("DOMContentLoaded", function () {
             );
 
 
-        // If cursor comes within 70px,
-        // move the button
+        // Cursor is close to button
         if (distance < 70) {
 
             moveNoButton();
@@ -139,32 +137,5 @@ document.addEventListener("DOMContentLoaded", function () {
 
     });
 
-
-    // ------------------------------------
-    // Prevent accidental click
-    // ------------------------------------
-
-    noButton.addEventListener("click", function (event) {
-
-        // If the button has moved,
-        // prevent accidental clicking.
-        if (noButton.dataset.moved === "true") {
-
-            event.preventDefault();
-
-            noButton.dataset.moved = "false";
-
-            return;
-
-        }
-
-    });
-
-
-    // ------------------------------------
-    // Mark button as moved
-    // ------------------------------------
-
-    const originalMove = moveNoButton;
 
 });

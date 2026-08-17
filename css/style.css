@@ -77,21 +77,22 @@ button{font:600 15px Poppins,sans-serif;cursor:pointer;border:0}
  .choice:nth-child(4),.choice:nth-child(5){grid-column:auto}
  .day{height:39px;font-size:13px}.calendar{padding:12px}
 }
-/* Playful No button */
-.no-button {
-    position: relative;
-    transition:
-        left 0.35s ease,
-        top 0.35s ease,
-        transform 0.25s ease;
-    z-index: 10;
-}
+/* Playful No button container */
 
-.no-button:hover {
-    transform: scale(0.96);
+#homeCard {
+    position: relative;
 }
 
 #homeButtons {
     position: relative;
     min-height: 65px;
+}
+
+.no-button {
+    transition:
+        left 0.35s ease,
+        top 0.35s ease,
+        transform 0.25s ease;
+
+    z-index: 100;
 }
